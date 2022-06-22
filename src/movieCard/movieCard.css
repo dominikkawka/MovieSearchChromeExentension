@@ -1,0 +1,19 @@
+body {
+   width: 360px;
+   height: 480px;
+}
+
+.pf-c-card {
+   background-color: aqua;
+   padding: 6px;
+   border-radius: 4px;
+}
+
+.gridItem {
+   background-color: lightgreen;
+   padding: 1em;
+}
+
+.score {
+   background-color: yellow;
+}
