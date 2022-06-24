@@ -1,5 +1,5 @@
 body {
-   width: 360px;
+   width: 400px;
    height: 480px;
 }
 
@@ -7,13 +7,22 @@ body {
    background-color: aqua;
    padding: 6px;
    border-radius: 4px;
+   font-size: 18px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.CardTitle {
+   text-align: center;
+   background: coral;
 }
 
 .gridItem {
    background-color: lightgreen;
-   padding: 1em;
+   padding: 6px;
 }
 
 .score {
-   background-color: yellow;
+   text-align: right;
+   margin-right: 36px;
+   margin-top: 18px;
 }
