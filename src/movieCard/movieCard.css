@@ -22,7 +22,12 @@ body {
 }
 
 .score {
+   background-color: lightgray;
    text-align: right;
    margin-right: 36px;
    margin-top: 18px;
+}
+
+#scoreBox {
+   /*background-color: red;*/
 }
