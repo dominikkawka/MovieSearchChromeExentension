@@ -3,5 +3,7 @@ body {
 }
 
 #searchBar {
+  background-color: white;
   padding: 12px;
+  width: 380px;
 }
