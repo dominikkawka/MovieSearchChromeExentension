@@ -3,19 +3,19 @@ const API_KEY = ''
 
 
 export interface MovieSearchData {
-   results: [{
-      title: string,
-      poster_path: string,
-      popularity: number,
-      vote_average: number,
-      genre_ids: number
-   }],
-   total_results: number
+   poster_path: string,
+   popularity: number,
+   title: string,
+   vote_average: number,
+   id: number,
+   genres: [{
+      name: string
+   }]
 }
 
 export async function fetchMovieSearchData(title:string): 
 Promise<MovieSearchData> {
-   const result = await fetch (`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`)
+   const result = await fetch (`https://api.themoviedb.org/3/movie/${title}?api_key=${API_KEY}&language=en-US`)
    if (!result.ok) {
       throw new Error ("Insert movie")
    }

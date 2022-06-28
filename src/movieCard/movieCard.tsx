@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { fetchMovieSearchData, MovieSearchData } from '../utils/api'
-import { Grid, GridItem, Card, CardBody, CardTitle } from '@patternfly/react-core'
+import { Grid, GridItem, Card, CardBody, CardTitle, Banner } from '@patternfly/react-core'
 import './movieCard.css'
 
 
@@ -20,20 +20,17 @@ const MovieCard: React.FC<{
    if (!movie) {
       return <div>loading...</div>
    }
-
-    const posterImage = "https://image.tmdb.org/t/p/original" + movie.results[0].poster_path
-    //const loadPosterImage = (document.getElementById("poster") as HTMLImageElement).src = posterImage
-
+   
    //Score rating colour system
    var scoreColour = 'orange'
    function scoreColourGrade() {
-     if (movie.results[0].vote_average >= 7) {
+     if (movie.vote_average >= 7) {
          console.log('green')
         return scoreColour = 'green'
-     } else if (movie.results[0].vote_average >= 4 && movie.results[0].vote_average < 7) {
+     } else if (movie.vote_average >= 4 && movie.vote_average < 7) {
          console.log('orange')
          return scoreColour = 'orange'
-     } else if (movie.results[0].vote_average < 4) {
+     } else if (movie.vote_average < 4) {
          console.log('red')
          return scoreColour = 'red'
      } else {
@@ -41,16 +38,17 @@ const MovieCard: React.FC<{
          return scoreColour = 'gray'
      }
    }
+   const posterImage = "https://image.tmdb.org/t/p/original" + movie.poster_path
    scoreColourGrade()
     return <Card>
        <CardBody>
             <Grid>
                <GridItem className="gridItem" span={4} rowSpan={3}><img width="100%" height="100%" src={posterImage}/></GridItem> 
-               <GridItem className="CardTitle" span={8} >Title: {movie.results[0].title}</GridItem>
-               <GridItem className="gridItem" span={4}>Genre: {movie.results[0].genre_ids}</GridItem>
-               <GridItem className="gridItem" span={4}>Users Watched: {movie.results[0].popularity}</GridItem>
+               <GridItem className="CardTitle" span={8} >Title: {movie.title}</GridItem>
+               <GridItem className="gridItem" span={4}>Genre: {movie.genres[0].name}</GridItem>
+               <GridItem className="gridItem" span={4}>Users Watched: {movie.popularity}</GridItem>
                <GridItem className="score" span={8} >
-                  <div color={scoreColour}>Score: {movie.results[0].vote_average}</div>
+                  <Banner id="scoreBox">Score: {movie.vote_average}</Banner>
                   </GridItem>
             </Grid>
          </CardBody>
